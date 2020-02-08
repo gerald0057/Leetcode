@@ -59,9 +59,12 @@ int main(void) {
 
   ret_dig = plusOne(digits, size, &ret_size);
 
-  for (int i = 0; i < ret_size; ++i) {
+  printf("\r\n[");
+  for (int i = 0; i < ret_size - 1; ++i) {
     printf("%d, ", *(ret_dig + i));
-  }
+  } printf("%d]\r\n", *(ret_dig + ret_size - 1));
+
+  free(ret_dig);
 
   return 0;
 }

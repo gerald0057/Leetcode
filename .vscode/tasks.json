@@ -8,6 +8,7 @@
       "label": "build",
       "command": "gcc",
       "args": [
+        "-fsanitize=address",
         "-g",
         "${file}",
         "-o",

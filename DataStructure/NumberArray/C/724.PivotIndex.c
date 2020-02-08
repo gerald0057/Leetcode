@@ -79,7 +79,7 @@ int main(void) {
   int nums[] = {1, 7, 3, 6, 5, 6};
   int size = (sizeof(nums) / sizeof(nums[0]));
 
-  printf("\r\nPivot Index: \t%d.\r\n", pivotIndex(nums, size));
+  printf("\r\nPivot Index: \t%d.\r\n", pivotIndex_2_Success(nums, size));
 
   return 0;
 }

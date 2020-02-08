@@ -52,7 +52,7 @@ int dominantIndex(int* nums, int numsSize) {
 
 int main(void) {
 
-  int nums[] = {0, 0, 3, 2};
+  int nums[] = {0, 0, 3, 1};
   int size = (sizeof(nums) / sizeof(nums[0]));
 
   printf("Dominant Index: \t%d.\r\n", dominantIndex(nums, size));
