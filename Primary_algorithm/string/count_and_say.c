@@ -1,22 +1,25 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 char *rle(const char *raw)
 {
-    static char buffer[1024];
+    char *buffer = (char *)malloc(10240);
+    if (NULL == buffer) return NULL;
+
     char *wr = buffer;
     int cnt = 1;
-    printf("input: %p %s\r\n", raw, raw);
+    // printf("input: %p %s\r\n", raw, raw);
     char last = *raw++;
     while (*raw)
     {
-        printf("-> %d %c %c\r\n", cnt, last, *raw);
+        // printf("-> %d %c %c\r\n", cnt, last, *raw);
         if (*raw != last)
         {
-            printf("raw:%p\r\n", raw);
+            // printf("raw:%p\r\n", raw);
             wr += sprintf(wr, "%d%c", cnt, last);
-            printf("last 1: %c %p\r\n", last, raw);
+            // printf("last 1: %c %p\r\n", last, raw);
             last = (*raw);
-            printf("last 2: %c %p\r\n", last, raw);
+            // printf("last 2: %c %p\r\n", last, raw);
             cnt = 1;
         }
         else
@@ -26,24 +29,25 @@ char *rle(const char *raw)
         raw++;
     }
 
-    printf("+ %d %c\r\n", cnt, last);
     wr += sprintf(wr, "%d%c", cnt, last);
     *wr = 0;
-
-    printf("ret: %s\r\n", buffer);
 
     return buffer;
 }
 
 char* countAndSay(int n)
 {
+    char *ret, *ret_val;
     if (n == 1) return "1";
-    return rle(countAndSay(n - 1));
+    ret = countAndSay(n - 1);
+    ret_val = rle(ret);
+    if (ret && !(ret[0] == '1' && ret[1] == '\0')) free(ret);
+    return ret_val;
 }
 
 int main(void)
 {
-    printf("cas:%s\r\n", countAndSay(4));
+    printf("cas:%s\r\n", countAndSay(25));
 
     return 0;
 }
