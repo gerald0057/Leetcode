@@ -1,10 +1,5 @@
 #include <stdio.h>
-
-struct ListNode
-{
-    int val;
-    struct ListNode *next;
-};
+#include "list.h"
 
 /**
  * Definition for singly-linked list.
